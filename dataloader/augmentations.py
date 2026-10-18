@@ -25,23 +25,60 @@ def scaling(x, sigma=1.1):
     return np.concatenate((ai), axis=1)
 
 
+
 def permutation(x, max_segments=5, seg_mode="random"):
-    orig_steps = np.arange(x.shape[2])
+    """
+    x: Tensor có shape (batch, channels, time)
+    Hoán vị các đoạn theo trục thời gian, giữ nguyên batch và channels.
+    """
+    import numpy as np
+    import torch
 
-    num_segs = np.random.randint(1, max_segments, size=(x.shape[0]))
+    if isinstance(x, torch.Tensor):
+        x_np = x.detach().cpu().numpy()
+        is_tensor = True
+        original_device = x.device
+        original_dtype = x.dtype
+    else:
+        x_np = np.asarray(x)
+        is_tensor = False
 
-    ret = np.zeros_like(x)
-    for i, pat in enumerate(x):
-        if num_segs[i] > 1:
-            if seg_mode == "random":
-                split_points = np.random.choice(x.shape[2] - 2, num_segs[i] - 1, replace=False)
-                split_points.sort()
-                splits = np.split(orig_steps, split_points)
-            else:
-                splits = np.array_split(orig_steps, num_segs[i])
-            warp = np.concatenate(np.random.permutation(splits)).ravel()
-            ret[i] = pat[0,warp]
-        else:
-            ret[i] = pat
-    return torch.from_numpy(ret)
+    batch_size, channels, seq_len = x_np.shape
+
+    if max_segments <= 1 or seq_len <= 1:
+        result = x_np.copy()
+    else:
+        result = np.empty_like(x_np)
+
+        for i in range(batch_size):
+            n_segments = np.random.randint(2, min(max_segments, seq_len) + 1)
+
+            # Chia trục thời gian thành các đoạn liên tiếp,
+            # độ dài có thể khác nhau.
+            split_points = np.sort(
+                np.random.choice(
+                    np.arange(1, seq_len),
+                    size=n_segments - 1,
+                    replace=False
+                )
+            )
+            boundaries = np.concatenate(([0], split_points, [seq_len]))
+            segments = [
+                x_np[i, :, boundaries[j]:boundaries[j + 1]]
+                for j in range(n_segments)
+            ]
+
+            # Hoán vị thứ tự các đoạn, không hoán vị batch/channel.
+            order = np.random.permutation(n_segments)
+            result[i] = np.concatenate(
+                [segments[j] for j in order],
+                axis=-1
+            )
+
+    if is_tensor:
+        return torch.as_tensor(
+            result, device=original_device, dtype=original_dtype
+        )
+    return result
+
 

@@ -1,0 +1,61 @@
+2026-10-18 21:19:54,231 | INFO | Device: cuda
+2026-10-18 21:19:54,232 | INFO | Mode: self_supervised
+2026-10-18 21:19:54,232 | INFO | Data path: ./data/SpeechOcean762
+2026-10-18 21:20:06,541 | INFO | Train batches=125, validation batches=32, test batches=157
+2026-10-18 21:20:09,516 | INFO | Smoke batch: labels=(16,), aug1=(16, 64, 1536), aug2=(16, 64, 1536)
+2026-10-18 21:20:09,877 | INFO | Smoke forward: logits=(2, 3), features=(2, 128, 14)
+2026-10-18 21:20:10,155 | INFO | Smoke self-supervised loss=2.1854
+2026-10-18 21:20:10,155 | INFO | Starting training...
+2026-10-18 21:20:31,880 | INFO | Epoch 1/40 | train_loss=6.7681 | valid_loss=6.6663 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:20:32,110 | INFO | Saved best checkpoint at epoch 1; validation loss=6.6663
+2026-10-18 21:21:08,560 | INFO | Epoch 2/40 | train_loss=5.6183 | valid_loss=6.4045 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:21:09,444 | INFO | Saved best checkpoint at epoch 2; validation loss=6.4045
+2026-10-18 21:21:59,517 | INFO | Epoch 3/40 | train_loss=5.2763 | valid_loss=6.2430 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:21:59,740 | INFO | Saved best checkpoint at epoch 3; validation loss=6.2430
+2026-10-18 21:22:45,255 | INFO | Epoch 4/40 | train_loss=4.7967 | valid_loss=6.0258 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:22:46,052 | INFO | Saved best checkpoint at epoch 4; validation loss=6.0258
+2026-10-18 21:23:36,743 | INFO | Epoch 5/40 | train_loss=4.3047 | valid_loss=5.9690 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:23:37,626 | INFO | Saved best checkpoint at epoch 5; validation loss=5.9690
+2026-10-18 21:24:27,437 | INFO | Epoch 6/40 | train_loss=4.0786 | valid_loss=5.8900 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:24:28,250 | INFO | Saved best checkpoint at epoch 6; validation loss=5.8900
+2026-10-18 21:25:09,290 | INFO | Epoch 7/40 | train_loss=3.9955 | valid_loss=6.0828 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:25:31,498 | INFO | Epoch 8/40 | train_loss=3.7815 | valid_loss=5.7948 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:25:31,738 | INFO | Saved best checkpoint at epoch 8; validation loss=5.7948
+2026-10-18 21:25:53,808 | INFO | Epoch 9/40 | train_loss=3.7205 | valid_loss=5.9006 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:26:17,073 | INFO | Epoch 10/40 | train_loss=3.6427 | valid_loss=5.6227 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:26:17,333 | INFO | Saved best checkpoint at epoch 10; validation loss=5.6227
+2026-10-18 21:27:10,660 | INFO | Epoch 11/40 | train_loss=3.3628 | valid_loss=5.4990 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:27:11,549 | INFO | Saved best checkpoint at epoch 11; validation loss=5.4990
+2026-10-18 21:28:04,315 | INFO | Epoch 12/40 | train_loss=3.1271 | valid_loss=5.6653 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:28:58,298 | INFO | Epoch 13/40 | train_loss=2.9940 | valid_loss=5.6966 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:29:45,386 | INFO | Epoch 14/40 | train_loss=2.9044 | valid_loss=5.7729 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:30:39,323 | INFO | Epoch 15/40 | train_loss=2.8248 | valid_loss=5.9594 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:31:33,451 | INFO | Epoch 16/40 | train_loss=2.5734 | valid_loss=5.5111 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:32:27,353 | INFO | Epoch 17/40 | train_loss=2.5389 | valid_loss=5.6181 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:33:19,891 | INFO | Epoch 18/40 | train_loss=2.5083 | valid_loss=5.6818 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:34:12,262 | INFO | Epoch 19/40 | train_loss=2.4898 | valid_loss=5.5196 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:34:51,286 | INFO | Epoch 20/40 | train_loss=2.3150 | valid_loss=5.4970 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:34:51,557 | INFO | Saved best checkpoint at epoch 20; validation loss=5.4970
+2026-10-18 21:35:13,450 | INFO | Epoch 21/40 | train_loss=2.2870 | valid_loss=5.5523 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:35:35,603 | INFO | Epoch 22/40 | train_loss=2.2676 | valid_loss=5.6682 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:35:58,257 | INFO | Epoch 23/40 | train_loss=2.2048 | valid_loss=5.3962 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:35:58,506 | INFO | Saved best checkpoint at epoch 23; validation loss=5.3962
+2026-10-18 21:36:21,255 | INFO | Epoch 24/40 | train_loss=2.2193 | valid_loss=5.7061 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:36:44,160 | INFO | Epoch 25/40 | train_loss=2.1802 | valid_loss=5.7454 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:37:06,707 | INFO | Epoch 26/40 | train_loss=2.1602 | valid_loss=5.5789 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:37:29,391 | INFO | Epoch 27/40 | train_loss=2.1019 | valid_loss=5.6240 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:37:52,241 | INFO | Epoch 28/40 | train_loss=1.9846 | valid_loss=5.6103 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:38:15,141 | INFO | Epoch 29/40 | train_loss=2.0203 | valid_loss=5.5623 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:38:38,101 | INFO | Epoch 30/40 | train_loss=1.9532 | valid_loss=5.6775 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:39:01,176 | INFO | Epoch 31/40 | train_loss=1.9728 | valid_loss=5.6749 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:39:24,756 | INFO | Epoch 32/40 | train_loss=1.8909 | valid_loss=5.6462 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:39:47,743 | INFO | Epoch 33/40 | train_loss=1.8359 | valid_loss=5.6555 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:40:10,859 | INFO | Epoch 34/40 | train_loss=1.8408 | valid_loss=5.6207 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:40:33,821 | INFO | Epoch 35/40 | train_loss=1.7986 | valid_loss=5.9648 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:40:56,499 | INFO | Epoch 36/40 | train_loss=1.7589 | valid_loss=5.7222 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:41:19,297 | INFO | Epoch 37/40 | train_loss=1.7832 | valid_loss=5.7237 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:41:42,103 | INFO | Epoch 38/40 | train_loss=1.7043 | valid_loss=5.9361 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:42:05,097 | INFO | Epoch 39/40 | train_loss=1.7335 | valid_loss=5.7721 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:42:27,974 | INFO | Epoch 40/40 | train_loss=1.6906 | valid_loss=5.8185 | train_acc=0.0000 | valid_acc=0.0000
+2026-10-18 21:42:28,104 | INFO | DINOv3 training completed.
+2026-10-18 21:42:45,998 | INFO | Best epoch=23 | test_loss=5.5486 | test_acc=0.0000

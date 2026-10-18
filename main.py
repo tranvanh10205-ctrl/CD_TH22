@@ -102,7 +102,15 @@ if training_mode == "fine_tune":
     model.load_state_dict(model_dict)
 
 if training_mode == "train_linear" or "tl" in training_mode:
-    load_from = os.path.join(os.path.join(logs_save_dir, experiment_description, run_description, f"self_supervised_seed_{SEED}", "saved_models"))
+    pretrain_run_description = "pretrain"
+
+    load_from = os.path.join(
+        logs_save_dir,
+        experiment_description,
+        pretrain_run_description,
+        f"self_supervised_seed_{SEED}",
+        "saved_models"
+        )
     chkpoint = torch.load(os.path.join(load_from, "ckp_last.pt"), map_location=device)
     pretrained_dict = chkpoint["model_state_dict"]
     model_dict = model.state_dict()
@@ -142,13 +150,61 @@ temporal_contr_optimizer = torch.optim.Adam(temporal_contr_model.parameters(), l
 if training_mode == "self_supervised":  # to do it only once
     copy_Files(os.path.join(logs_save_dir, experiment_description, run_description), data_type)
 
-# Trainer
-Trainer(model, temporal_contr_model, model_optimizer, temporal_contr_optimizer, train_dl, valid_dl, test_dl, device, logger, configs, experiment_log_dir, training_mode)
 
+# Huấn luyện: chỉ gọi Trainer đúng một lần
+Trainer(
+    model, temporal_contr_model,
+    model_optimizer, temporal_contr_optimizer,
+    train_dl, valid_dl, test_dl,
+    device, logger, configs,
+    experiment_log_dir, training_mode
+)
+
+# Đánh giá checkpoint tốt nhất trên tập test
 if training_mode != "self_supervised":
-    # Testing
-    outs = model_evaluate(model, temporal_contr_model, test_dl, device, training_mode)
-    total_loss, total_acc, pred_labels, true_labels = outs
-    _calc_metrics(pred_labels, true_labels, experiment_log_dir, args.home_path)
+    best_checkpoint_path = os.path.join(
+        experiment_log_dir,
+        "saved_models",
+        "ckp_best.pt"
+    )
 
-logger.debug(f"Training time is : {datetime.now()-start_time}")
+    if not os.path.exists(best_checkpoint_path):
+        raise FileNotFoundError(
+            f"Không tìm thấy checkpoint: {best_checkpoint_path}"
+        )
+
+    checkpoint = torch.load(
+        best_checkpoint_path,
+        map_location=device
+    )
+
+    model.load_state_dict(checkpoint["model_state_dict"])
+
+    temporal_contr_model.load_state_dict(
+        checkpoint["temporal_contr_model_state_dict"]
+    )
+
+    logger.debug(
+        f"Evaluating best checkpoint from epoch "
+        f"{checkpoint['epoch']}"
+    )
+
+    # Chỉ đánh giá test sau khi đã chọn mô hình bằng validation
+    test_loss, test_acc, pred_labels, true_labels = model_evaluate(
+        model, temporal_contr_model,
+        test_dl, device, training_mode
+    )
+
+    logger.debug(
+        f"Test loss: {float(test_loss):.4f} | "
+        f"Test accuracy: {float(test_acc):.4f}"
+    )
+
+    _calc_metrics(
+        pred_labels, true_labels,
+        experiment_log_dir, args.home_path
+    )
+
+logger.debug(
+    f"Training time is : {datetime.now()-start_time}"
+)
