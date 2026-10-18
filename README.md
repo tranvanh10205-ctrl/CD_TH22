@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# DINOv3 + TS-TCC for SpeechOcean762
+# DINOv3 + TS-TCC 
 
 > **Mục tiêu:** tích hợp backbone thị giác DINOv3 vào pipeline học biểu diễn chuỗi thời gian của TS-TCC, sử dụng đầu vào Log-Mel của SpeechOcean762. Tài liệu này chỉ rõ vị trí thay đổi kiến trúc, cách chạy, và sự khác nhau giữa loss gốc của TS-TCC và loss được dùng trong bản tích hợp.
 
