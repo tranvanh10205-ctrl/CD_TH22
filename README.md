@@ -38,7 +38,7 @@ The resulting feature sequence is passed to the existing TC module for self-supe
 
 | Component | Role |
 |---|---|
-| SpeechOcean762 data loader | Loads data, labels, and augmented views |
+| SpeechE data loader | Loads data, labels, and augmented views |
 | Log-Mel adapter | Converts `(B, 64, T)` features into three-channel images |
 | DINOv3 ViT-S/16 | Extracts pretrained visual representations |
 | Feature projection | Maps the DINOv3 hidden dimension to the TS-TCC feature dimension |
